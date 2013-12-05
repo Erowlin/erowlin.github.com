@@ -1,0 +1,32 @@
+---
+layout: post
+title: Epitech Innovative Project - What is it?
+tags:
+- General
+status: publish
+type: post
+published: true
+tags: [Intro, Epitech, Epitech Innovative Project, EIP, Plug&Stream, PlugAndStream, managment, teamwork, Video, Broadcasting, student project, workflow] 
+category: EIP
+meta:
+  _wpas_done_all: '1'
+  _wpas_skip_2444087: '1'
+  _edit_last: '1'
+---
+
+<img alt="Epitech Innovative Projects" src="https://eip.epitech.eu/img/layout/innovation_forum-eip-2010.jpg" width="490" height="222" />
+
+The "<strong>Epitech Innovative Project</strong>" is a really important phase in our studies at <strong>Epitech</strong>. It's THE BIG project !
+
+<strong>For two years</strong>, we're going to make a project, of our choice, <strong>from conception to production and sale</strong>. An EIP can be an informatic project, or a human project, what you want, the moment the EIP Laboratory valid it.
+
+I choose to work on a <strong>Video Broadcasting solution </strong>for startup, little and big enterprises. For example, your company is going to organize a conference. For a maximum of visibility and facility, you certainly may want to broadcast it in real-time, HD, with audio and a fabulous PowerPoint to share with your public. All this in one solution, from capture to broadcast. If you want more information, you can go to <a href="http://plugandstream.com/index.php"><strong>Plug&amp;Stream Website </strong></a>!
+
+<strong>As a Project Manager, I will have to </strong>:
+<ul>
+	<li>Make this EIP accepted by the EIP Laboratory</li>
+	<li><strong>Find a good team</strong>, with the good resources, seven people at least</li>
+	<li><strong>Develop my part, I think I'm goind to specialize in <strong>FFMPEG</strong>and <strong>Cloud Technology</strong>
+	<li><strong>Organize weekly video-conferencing </strong>with the team (Excepting a lot of trouble, in 4th year, we have to move in a foreign country, so with jet lag of all the team, it should be fun =D)</li>
+	<li>Finish the project, <strong>technically and commercially.</strong></li>
+</ul>

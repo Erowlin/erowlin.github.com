@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Install Optimus Drivers 319.12 BETA On Linux
+        </title>
+        
+        <meta name="author" content="Thomas Romera">
+        <meta name="viewport" content="width=device-width" />
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+                                                            
+            </script>
+        <![endif]-->
+        <!-- Le styles -->
+        <link href="/assets/themes/foundation/css/foundation.min.css" rel="stylesheet">
+        <link href="/assets/themes/foundation/css/app.css" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/themes/foundation/css/styles/default.css">
+	<script type="text/javascript" src="/assets/themes/foundation/javascripts/highlight.pack.js">
+        </script>
+        <script type="text/javascript" src="/assets/themes/foundation/javascripts/jquery.js">
+        </script>
+        <script type="text/javascript" src="/assets/themes/foundation/javascripts/foundation.min.js">
+        </script>
+        <script type="text/javascript" src="/assets/themes/foundation/javascripts/app.js">
+        </script>
+	<script>hljs.initHighlightingOnLoad();</script>
+        <!-- Le fav and touch icons -->
+        <!-- Update these with your own images <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+    <body>
+        <nav class="top-bar expanded">
+            <ul>
+                <li class="name">
+                    <h1>
+                        <a href="/">Thomas Romera</a>
+                    </h1>
+                </li>
+                <li class="toggle-topbar">
+                    <a href="#"></a>
+                </li>
+            </ul>
+            <section class="row">
+                <ul>
+                    
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                      
+                    
+
+
+  
+    
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+ 
+                    <li>
+                        <a href="/about_me.html">About Me</a>
+                    </li>
+                    
+                    <li class="active">
+                        <bbb>You're reading : </bbb><bb>Install Optimus Drivers 319.12 BETA On Linux</bb> <a style="" href="https://twitter.com/share" class="twitter-share-button" data-via="erowtom" data-lang="fr" data-dnt="true">Tweeter</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+
+        <div class="row">
+            <!-- Main Blog Content -->
+            <div class="nine columns" role="content">
+                <div class="content">
+                    
+<div class="panel">
+  <div class="page-header">
+    <h1>Install Optimus Drivers 319.12 BETA On Linux </h1>
+    Published the 16 April 2013 by Thomas Romera
+  </div>
+  <hr>
+
+  <div class="row">
+    <div class="twelve columns">
+      <p><img class="aligncenter" alt="RailsPanel Screenshot" src="/img/linus_torvald_optimus.jpg" width="571" height="261" /></p>
+<p>After getting some trouble to install <strong>latest Nvidia Drivers for Optimus</strong>, I share my experience and hope it will help some people (: .</p>
+<p><strong>Note :</strong> The installation has been tested on Ubuntu 12.04 <span class="caps">LTS</span> and Lenovo W530 with Nvidia 5100M. <br />
+Nvidia say it should work on any Optimus card, but be carefull ;).<br />
+This &#8220;guide&#8221; is not especially intended for Ubuntu Distributions !</p>
+<p><strong>First, be sure to meet the minimum requirements</strong> :</p>
+<ul>
+	<li>Randr 1.4</li>
+	<li>X.org 1.13</li>
+</ul>
+<p>Then : <strong>Download Driver from Nvidia Website</strong> <a href="http://www.nvidia.com/object/linux-display-amd64-319.12-driver.html">64 Bit Version</a> and <a href="http://www.nvidia.com/object/linux-display-ia32-319.12-driver.html">32 Bits version</a></p>
+<p>After that, you have to <strong>blacklist nouveau</strong> , which is the default standard kernel module.<br />
+You can do that with <strong>sudoedit /etc/modprobe.d/nvidia-graphics-drivers.conf</strong><br />
+and add this :<br />
+<pre><code class="bash">
+blacklist nouveau
+options nouveau modeset=0
+</code></pre></p>
+<p><strong>Then Reboot</strong> <br />
+/!\ (Add this page into your favorites, and access it through another computer, or print it)</p>
+<p>The next step is to <strong>kill your X server</strong>, on Ubuntu you can do this with <br />
+<strong>sudo service lightdm stop</strong><br />
+OR <br />
+<strong>sudo service gdm stop</strong><br />
+OR <br />
+<strong>sudo service kde stop</strong><br />
+OR<br />
+<strong>You understood, i&#8217;m sure, not gonna list all the desktop environments..</strong></p>
+<p>Then, switch <span class="caps">TTY</span> if the actual crashed (<span class="caps">CTRL</span> + <span class="caps">ALT</span> + F1)</p>
+<p><strong>The next step is to install Nvidia drivers</strong> :</p>
+<pre><code style="bash">
+chmod u+x NVIDIA-Linux-x86_64-319.12.run
+sudo ./NVIDIA-Linux-x86_64-319.12.run
+</code></pre>
+<p>Install it, then before rebooting, <strong>backup your xorg.conf</strong> :</p>
+<pre><code style="bash">
+cp /etc/X11/xorg.conf /etc/X11/xorg.conf.mybak
+</code></pre>
+<p>Then replace all your /etc/X11/xorg.conf by this one :</p>
+<pre><code class="bash">
+Section "ServerLayout"
+	Identifier "layout"
+	Screen 0 "nvidia"
+	Inactive "intel"
+EndSection
+Section "Device"
+	Identifier "nvidia"
+	Driver "nvidia"
+	BusID "&lt;BusID for NVIDIA device here&gt;"
+EndSection
+Section "Screen"
+	Identifier "nvidia"
+	Device "nvidia"
+	# Uncomment this line if your computer has no display devices connected to
+	# the NVIDIA GPU.  Leave it commented if you have display devices
+	# connected to the NVIDIA GPU that you would like to use.
+	#Option "UseDisplayDevice" "none"
+EndSection
+Section "Device"
+	Identifier "intel"
+	Driver "modesetting"
+EndSection
+Section "Screen"
+	Identifier "intel"
+	Device "intel"
+EndSection
+	
+</code>
+</pre>
+<p>Add those line to your <strong>~/.xinitrc</strong> : <br />
+<pre><code class="bash">
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+</code></pre></p>
+<p>Then reboot, and voila !</p>
+<p>Hope this will help you, let me know if it worked for you on my Twitter : <a href="http://twitter.com/erowtom" title="@Erowtom&#39;s Twitter">@Erowtom</a><br />
+And if my anglishe is too bad, let me a comment, I will correct it ;)</p>
+<p><strong>What do if your getting trouble :</strong> <br />
+1- Verify that you blacklisted nouveau kernel module<br />
+2- Verify that you copied all content correctly to xorg.conf<br />
+3- Verify that you have optimus&#8230;<br />
+4- Go to your bios, and verify that Optimus is correctly enabled<br />
+5- If nothing can&#8217;t work, do all steps at reverse, copy back your xorg.conf.mybak to xorg.conf and enable nouveau module, then reboot.</p>
+      <hr>
+      
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'thomasromerawebsite'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+    </div>
+    <div class="row">
+      <div class="three columns">
+        <h4>Published</h4>
+        <div class="date"><span>16 April 2013</span></div>
+      </div>
+      <div class="five columns">
+        
+          <h4>Tags</h4>
+          <ul class="tag_box inline">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#Install-ref">Install <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Linux-ref">Linux <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Optimus-ref">Optimus <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Drivers-ref">Drivers <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#319.12-ref">319.12 <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Beta-ref">Beta <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Ubuntu-ref">Ubuntu <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Debian-ref">Debian <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#disable Nouveau-ref">disable Nouveau <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Nouveau Module Kernel-ref">Nouveau Module Kernel <span>1</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+ 
+    </div>
+
+  </div>
+</div>
+
+                </div>
+            </div>
+            <aside class="three columns">
+                <h5>
+                    Categories
+                </h5>
+                <ul class="side-nav">
+                     
+
+
+  
+     
+    	<li><a href="/categories.html#eip-ref">
+    		eip <span>(1)</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#web technologies-ref">
+    		web technologies <span>(1)</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#ruby-ref">
+    		ruby <span>(2)</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#jekyll-ref">
+    		jekyll <span>(1)</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#rails-ref">
+    		rails <span>(1)</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#/dev/random-ref">
+    		/dev/random <span>(1)</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#training-ref">
+    		training <span>(1)</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#linux-ref">
+    		linux <span>(1)</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#optimus-ref">
+    		optimus <span>(1)</span>
+    	</a></li>
+    
+  
+
+
+                </ul>
+                <div class="panel">
+                    <h5>
+                        A little about me...
+                    </h5>
+                    <p>
+                        I'm a French Developer, I love to discover new things, new stuff that
+                        i can play with. I'm interested in C++, Ruby on Rails, hack myself (Personal
+                        Optimization, no drugs), French Food and good music.
+                    </p>
+                    <a href="/about_me.html">Learn more about me &rarr;</a>
+                </div>
+            </aside>
+        </div>
+        
+    </body>
+</html>
+

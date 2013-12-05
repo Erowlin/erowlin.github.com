@@ -1,0 +1,8 @@
+---
+tagline: "New website coming soon !"
+title: Thomas Romera
+---
+<center><h1>Welcome on my (old) (ugly) website.</h1>
+<h2> New website coming (really) soon ! </h2>
+<a href="http://twitter.com/erowtom">My Twitter </a>
+<a href="http://fr.linkedin.com/in/thomasromera/">My LinkedIn</a></center>

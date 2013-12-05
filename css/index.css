@@ -1,0 +1,45 @@
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+.container {
+  max-width: 970px !important;
+}
+
+.ruby-color {
+	color: #AD3B3B;
+}
+
+#center-text {
+  vertical-align: middle;
+  text-align: center;
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+
+#lead-text-picture {
+	padding-top : 16px;
+	padding-left: 20px;
+}
+
+.section {
+  margin-top: 30px;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -200px;
+  /* Pad bottom by footer height */
+}
+
+/* Set the fixed height of the footer here */
+#footer-step1 {
+  background-color: #1ABC9C;
+}
+
+
+

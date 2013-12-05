@@ -1,0 +1,19 @@
+---
+layout: me
+title: More About Thomas Romera
+header: Posts By Category
+date: 19-01-2013
+---
+
+My name is Thomas Romera, I'm a <strong>French Developer</strong>, currently living in Montpellier (France).
+
+I love to make great stuff in <strong>Ruby On Rails and C++.</strong> I am always open to learn new things, optimize my earlier stuff and talk (troll) Apple.
+
+Here is my <strong><a href="https://www.dropbox.com/s/0lnec4ta9cv49ve/CV_Thomas%20Romera_en.pdf" target="_blank">fresh CV.</a></strong>
+
+<strong>You can also find me on</strong> :
+
+<a href="http://twitter.com/erowtom" rel="nofollow" target="_blank"><img class="alignnone" alt="TwitterSocialIcon" src="http://dl.dropbox.com/u/12116109/SocialIcons/Twitter.png" width="50" height="50" /></a><a href="http://github.com/erowlin" rel="nofollow" target="_blank"><img class="alignnone" alt="GithubSocialIcon" src="http://dl.dropbox.com/u/12116109/SocialIcons/Github.png" width="50" height="50" /></a><a href="http://www.linkedin.com/pub/thomas-romera/40/814/9a2" rel="nofollow" target="_blank"><img class="alignnone" alt="LinkedInSocialIcon" src="http://dl.dropbox.com/u/12116109/SocialIcons/LinkedIn.png" width="50" height="50" /></a>
+
+<a class="twitter-timeline"  href="https://twitter.com/erowtom" data-widget-id="292797879792320512">Tweets de @erowtom</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>

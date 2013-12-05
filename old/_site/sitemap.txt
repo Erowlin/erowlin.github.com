@@ -1,0 +1,17 @@
+
+http://thomas-romera.com/about_me.html
+http://thomas-romera.com/archive.html
+http://thomas-romera.com/atom.xml
+http://thomas-romera.com/categories.html
+http://thomas-romera.com/index.html
+http://thomas-romera.com/index2.html
+http://thomas-romera.com/pages.html
+http://thomas-romera.com/sitemap.txt
+http://thomas-romera.com/tags.html
+
+http://thomas-romera.com/2013/04/16/Install-Optimus-Drivers-319-12-BETA-On-Linux
+http://thomas-romera.com/2013/02/02/Academy-Google%40HEC
+http://thomas-romera.com/2013/01/22/Chrome-Extension-For-Rails-Development
+http://thomas-romera.com/2013/01/19/How-Jekyll-Rock-With-Style
+http://thomas-romera.com/2013/01/15/new-blog-coming-out-lighter-faster-using-real-technology
+http://thomas-romera.com/2012/12/22/epitech-innovative-project-step-1-what-is-it

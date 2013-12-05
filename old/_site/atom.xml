@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>Thomas Romera Blog</title>
+ <link href="http://thomas-romera.com/atom.xml" rel="self"/>
+ <link href="http://thomas-romera.com"/>
+ <updated>2013-12-04T16:56:45-05:00</updated>
+ <id>http://thomas-romera.com</id>
+ <author>
+   <name>Thomas Romera</name>
+   <email>contact@thomas-romera.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Install Optimus Drivers 319.12 BETA On Linux</title>
+   <link href="http://thomas-romera.com/2013/04/16/Install-Optimus-Drivers-319-12-BETA-On-Linux"/>
+   <updated>2013-04-16T00:00:00-04:00</updated>
+   <id>http://thomas-romera.com/2013/04/16/Install-Optimus-Drivers-319-12-BETA-On-Linux</id>
+   <content type="html">&lt;p&gt;&lt;img class=&quot;aligncenter&quot; alt=&quot;RailsPanel Screenshot&quot; src=&quot;/img/linus_torvald_optimus.jpg&quot; width=&quot;571&quot; height=&quot;261&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;After getting some trouble to install &lt;strong&gt;latest Nvidia Drivers for Optimus&lt;/strong&gt;, I share my experience and hope it will help some people (: .&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note :&lt;/strong&gt; The installation has been tested on Ubuntu 12.04 &lt;span class=&quot;caps&quot;&gt;LTS&lt;/span&gt; and Lenovo W530 with Nvidia 5100M. &lt;br /&gt;
+Nvidia say it should work on any Optimus card, but be carefull ;).&lt;br /&gt;
+This &amp;#8220;guide&amp;#8221; is not especially intended for Ubuntu Distributions !&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;First, be sure to meet the minimum requirements&lt;/strong&gt; :&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;Randr 1.4&lt;/li&gt;
+	&lt;li&gt;X.org 1.13&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Then : &lt;strong&gt;Download Driver from Nvidia Website&lt;/strong&gt; &lt;a href=&quot;http://www.nvidia.com/object/linux-display-amd64-319.12-driver.html&quot;&gt;64 Bit Version&lt;/a&gt; and &lt;a href=&quot;http://www.nvidia.com/object/linux-display-ia32-319.12-driver.html&quot;&gt;32 Bits version&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;After that, you have to &lt;strong&gt;blacklist nouveau&lt;/strong&gt; , which is the default standard kernel module.&lt;br /&gt;
+You can do that with &lt;strong&gt;sudoedit /etc/modprobe.d/nvidia-graphics-drivers.conf&lt;/strong&gt;&lt;br /&gt;
+and add this :&lt;br /&gt;
+&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;
+blacklist nouveau
+options nouveau modeset=0
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Then Reboot&lt;/strong&gt; &lt;br /&gt;
+/!\ (Add this page into your favorites, and access it through another computer, or print it)&lt;/p&gt;
+&lt;p&gt;The next step is to &lt;strong&gt;kill your X server&lt;/strong&gt;, on Ubuntu you can do this with &lt;br /&gt;
+&lt;strong&gt;sudo service lightdm stop&lt;/strong&gt;&lt;br /&gt;
+OR &lt;br /&gt;
+&lt;strong&gt;sudo service gdm stop&lt;/strong&gt;&lt;br /&gt;
+OR &lt;br /&gt;
+&lt;strong&gt;sudo service kde stop&lt;/strong&gt;&lt;br /&gt;
+OR&lt;br /&gt;
+&lt;strong&gt;You understood, i&amp;#8217;m sure, not gonna list all the desktop environments..&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Then, switch &lt;span class=&quot;caps&quot;&gt;TTY&lt;/span&gt; if the actual crashed (&lt;span class=&quot;caps&quot;&gt;CTRL&lt;/span&gt; + &lt;span class=&quot;caps&quot;&gt;ALT&lt;/span&gt; + F1)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The next step is to install Nvidia drivers&lt;/strong&gt; :&lt;/p&gt;
+&lt;pre&gt;&lt;code style=&quot;bash&quot;&gt;
+chmod u+x NVIDIA-Linux-x86_64-319.12.run
+sudo ./NVIDIA-Linux-x86_64-319.12.run
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Install it, then before rebooting, &lt;strong&gt;backup your xorg.conf&lt;/strong&gt; :&lt;/p&gt;
+&lt;pre&gt;&lt;code style=&quot;bash&quot;&gt;
+cp /etc/X11/xorg.conf /etc/X11/xorg.conf.mybak
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then replace all your /etc/X11/xorg.conf by this one :&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;
+Section &quot;ServerLayout&quot;
+	Identifier &quot;layout&quot;
+	Screen 0 &quot;nvidia&quot;
+	Inactive &quot;intel&quot;
+EndSection
+Section &quot;Device&quot;
+	Identifier &quot;nvidia&quot;
+	Driver &quot;nvidia&quot;
+	BusID &quot;&amp;lt;BusID for NVIDIA device here&amp;gt;&quot;
+EndSection
+Section &quot;Screen&quot;
+	Identifier &quot;nvidia&quot;
+	Device &quot;nvidia&quot;
+	# Uncomment this line if your computer has no display devices connected to
+	# the NVIDIA GPU.  Leave it commented if you have display devices
+	# connected to the NVIDIA GPU that you would like to use.
+	#Option &quot;UseDisplayDevice&quot; &quot;none&quot;
+EndSection
+Section &quot;Device&quot;
+	Identifier &quot;intel&quot;
+	Driver &quot;modesetting&quot;
+EndSection
+Section &quot;Screen&quot;
+	Identifier &quot;intel&quot;
+	Device &quot;intel&quot;
+EndSection
+	
+&lt;/code&gt;
+&lt;/pre&gt;
+&lt;p&gt;Add those line to your &lt;strong&gt;~/.xinitrc&lt;/strong&gt; : &lt;br /&gt;
+&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;Then reboot, and voila !&lt;/p&gt;
+&lt;p&gt;Hope this will help you, let me know if it worked for you on my Twitter : &lt;a href=&quot;http://twitter.com/erowtom&quot; title=&quot;@Erowtom&amp;#39;s Twitter&quot;&gt;@Erowtom&lt;/a&gt;&lt;br /&gt;
+And if my anglishe is too bad, let me a comment, I will correct it ;)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What do if your getting trouble :&lt;/strong&gt; &lt;br /&gt;
+1- Verify that you blacklisted nouveau kernel module&lt;br /&gt;
+2- Verify that you copied all content correctly to xorg.conf&lt;br /&gt;
+3- Verify that you have optimus&amp;#8230;&lt;br /&gt;
+4- Go to your bios, and verify that Optimus is correctly enabled&lt;br /&gt;
+5- If nothing can&amp;#8217;t work, do all steps at reverse, copy back your xorg.conf.mybak to xorg.conf and enable nouveau module, then reboot.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Academy E-Commerce Google@HEC Paris</title>
+   <link href="http://thomas-romera.com/2013/02/02/Academy-Google%40HEC"/>
+   <updated>2013-02-02T00:00:00-05:00</updated>
+   <id>http://thomas-romera.com/2013/02/02/Academy-Google@HEC</id>
+   <content type="html">&lt;p&gt;In january 2013, I&amp;#8217;ve got the chance to participate to the &lt;a href=&quot;http://www.hec.fr/Grande-Ecole/Programme/Academies#anticipation&quot; rel=&quot;nofollow&quot; target=&quot;_blank&quot;&gt;Google@HEC E-Commerce Academy&lt;/a&gt;. It&amp;#8217;s an intensive 3 weeks academy in partnership with &lt;span class=&quot;caps&quot;&gt;HEC&lt;/span&gt;, Google, Epitech and Supinternet.We had to work with two &lt;span class=&quot;caps&quot;&gt;HEC&lt;/span&gt; Students and One designer from Supinternet.&lt;/p&gt;
+&lt;p&gt;The goal is to put various pleople issues from different school and formation together, and imagine a new innovative product to sell. This year, our subject was &lt;a href=&quot;http://www.causses.org/&quot; rel=&quot;nofollow&quot; target=&quot;_blank&quot;&gt;Causses and Lunchbox&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In three weeks, we was able to build a concept, define the Marketing and Communication orientations, and develop an E-Commerce Website.&lt;/p&gt;
+&lt;p&gt;Our concept was &amp;#8220;Recreate some restaurant chef&amp;#8217;s recipe at your home.&amp;#8221;. So we had to form partnership with restaurants to get theirs recipes, and they got a lot of visibility and advertising.&lt;/p&gt;
+&lt;p&gt;During this Academy, we learned a lot about marketing, &lt;span class=&quot;caps&quot;&gt;SEO&lt;/span&gt; and how to launch a new product.&lt;br /&gt;
+(and alcohol resistance of &lt;span class=&quot;caps&quot;&gt;HEC&lt;/span&gt; students !)&lt;/p&gt;
+&lt;p&gt;Those three weeks was just crazy, we had really interesting classes, a lot of work and a great project.&lt;/p&gt;
+&lt;p&gt;If you&amp;#8217;re interested about our project, you can go to &lt;a href=&quot;http://keatch.fr&quot; rel=&quot;nofollow&quot; target=_blank&gt;Keatch Website (Fr)&lt;/a&gt;.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Faster Development on Rails with RailsPanel.</title>
+   <link href="http://thomas-romera.com/2013/01/22/Chrome-Extension-For-Rails-Development"/>
+   <updated>2013-01-22T00:00:00-05:00</updated>
+   <id>http://thomas-romera.com/2013/01/22/Chrome-Extension-For-Rails-Development</id>
+   <content type="html">&lt;img alt=&#39;RailsPanel Screenshot&#39; class=&#39;aligncenter&#39; src=&#39;https://dl.dropbox.com/u/69357609/Captured/WOvkF.png&#39; /&gt;
+&lt;p&gt;&lt;strong&gt;RailsPanel&lt;/strong&gt; is an &lt;strong&gt;extension for Chrome&lt;/strong&gt; that allow you to have development.log directly in the Developper Tool (F12).&lt;/p&gt;
+
+&lt;p&gt;The 1/2 step is adding in your &lt;strong&gt;Gemfile&lt;/strong&gt; : &lt;pre&gt;
+  &lt;code class=&#39;ruby&#39;&gt;
+group :development do
+    gem &#39;meta_request&#39;, &#39;0.2.1&#39;
+end
+  &lt;/code&gt;
+&lt;/pre&gt; &lt;strong&gt;Finally&lt;/strong&gt;, install the &lt;strong&gt;Chrome extension&lt;/strong&gt; from the &lt;a href=&#39;https://chrome.google.com/webstore/detail/railspanel/gjpfobpafnhjhbajcjgccbbdofdckggg&#39;&gt;Chrome Store&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Enjoy !&lt;/p&gt;
+
+&lt;p&gt;Github : &lt;a href=&#39;https://github.com/dejan/rails_panel&#39;&gt;RailsPanel on Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks to @steveklabnik&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>How Jekyll Rock (With Style)</title>
+   <link href="http://thomas-romera.com/2013/01/19/How-Jekyll-Rock-With-Style"/>
+   <updated>2013-01-19T00:00:00-05:00</updated>
+   <id>http://thomas-romera.com/2013/01/19/How-Jekyll-Rock-With-Style</id>
+   <content type="html">&lt;div style=&quot;text-align:center&quot;&gt;
+&lt;p&gt;&lt;img align=&quot;top&quot; alt=&quot;&quot; src=&quot;/img/jekyll.jpg&quot; width=&quot;571&quot; height=&quot;261&quot; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Some days ago, I told that I was working on a new blog. I also talked about Jekyll, a new system that allow you to make a great site (Static).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Jekyll&lt;/strong&gt; is a simple, blog aware, &lt;strong&gt;static site generator&lt;/strong&gt;. With it special directory structure, it allow you to write your article through &lt;strong&gt;Textile&lt;/strong&gt; or &lt;strong&gt;Markdown&lt;/strong&gt;, coupled with &lt;strong&gt;Liquid&lt;/strong&gt; to create some &amp;#8220;Dynamic content&amp;#8221; and compile everything.&lt;br /&gt;
+So, you can host your blog on Github for 0 $. &lt;strong&gt;Yes, 0 $.&lt;/strong&gt; More informations on the &lt;a href=&quot;https://help.github.com/articles/using-jekyll-with-pages&quot;&gt;Official GitHub documentation&lt;/a&gt; !  &lt;br /&gt;
+Jekyll can be installed with a simple &lt;strong&gt;&lt;cc&gt;gem install jekyll&lt;/cc&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Be sure to install the right version, &lt;strong&gt;some compatibility issue can make you loose some time&lt;/strong&gt; : &lt;br /&gt;
+&lt;cc&gt;&lt;br /&gt;
+gem &amp;#8216;jekyll&amp;#8217;,     &amp;#8216;=0.12.0&amp;#8217;&lt;br /&gt;
+gem &amp;#8216;liquid&amp;#8217;,     &amp;#8216;=2.4.1&amp;#8217;&lt;br /&gt;
+gem &amp;#8216;redcarpet&amp;#8217;,  &amp;#8216;=2.1.1&amp;#8217;&lt;br /&gt;
+gem &amp;#8216;maruku&amp;#8217;,     &amp;#8216;=0.6.0&amp;#8217;&lt;br /&gt;
+gem &amp;#8216;rdiscount&amp;#8217;,  &amp;#8216;=1.6.8&amp;#8217;&lt;br /&gt;
+gem &amp;#8216;RedCloth&amp;#8217;,   &amp;#8216;=4.2.9&amp;#8217;&lt;/p&gt;
+&lt;/cc&gt;
+&lt;p&gt;Then, I just used this fantastic website : &lt;a href=&quot;http://jekyllbootstrap.com/&quot;&gt;Skeleton for Jekyll using Bootstrap&lt;/a&gt; that let you fork a &lt;strong&gt;Jekyll skeleton&lt;/strong&gt; with Bootstrap installed, comments, analytics, and a lot of good stuff. After that, I just created a new theme for Jekyll to &lt;strong&gt;integrate Foundation instead of Bootstrap&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;All my website is on my Github, you can find it here : &lt;a href=&quot;https://github.com/Erowlin/erowlin.github.com&quot;&gt;My Github&lt;/a&gt;. &lt;br /&gt;
+&lt;strong&gt;Feel free to Fork, modify, share !&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;See you !&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>New blog, lighter, faster, using real technology</title>
+   <link href="http://thomas-romera.com/2013/01/15/new-blog-coming-out-lighter-faster-using-real-technology"/>
+   <updated>2013-01-15T00:00:00-05:00</updated>
+   <id>http://thomas-romera.com/2013/01/15/new-blog-coming-out-lighter-faster-using-real-technology</id>
+   <content type="html">&lt;div style=&quot;text-align:center&quot;&gt;
+&lt;p&gt;&lt;img align=&quot;top&quot; alt=&quot;&quot; src=&quot;/img/jekyll.jpg&quot; width=&quot;571&quot; height=&quot;261&quot; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Hello, just to tell you that this is the new version of my blog, without this WordPress sucking all the shared server resources.&lt;/p&gt;
+&lt;p&gt;Seriously, it&amp;#8217;s really a heavy solution, I don&amp;#8217;t want to rent a dedicated server only for my blog. I need something more personal, faster, cheaper, and stronger.&lt;/p&gt;
+&lt;p&gt;So, I&amp;#8217;m now using &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;&lt;strong&gt;Jekyll&lt;/strong&gt;&lt;/a&gt;, (thanks Julien !), and &lt;strong&gt;for free&lt;/strong&gt;, use the &lt;strong&gt;GitHub page&lt;/strong&gt;. &lt;strong&gt;Jekyll&lt;/strong&gt; compile all your pages to give you a &amp;#8220;static&amp;#8221; site. So, I don&amp;#8217;t need &lt;span class=&quot;caps&quot;&gt;PHP&lt;/span&gt;, I don&amp;#8217;t need a database. And, it&amp;#8217;s coded in &lt;strong&gt;&lt;span class=&quot;caps&quot;&gt;RUBY&lt;/span&gt;&lt;/strong&gt; !&lt;br /&gt;
+&lt;strong&gt;&lt;br /&gt;
+Here is a semi technique article to more describe Jekyll : &lt;a href=&quot;http://thomas-romera.com/2013/01/19/How-Jekyll-Rock-With-Style/&quot;&gt;How Jekyll Rock (With Style)&lt;/a&gt;&lt;br /&gt;
+&lt;/strong&gt;&lt;/p&gt;
+&lt;div style=&quot;text-align:center&quot;&gt;
+&lt;p&gt;&lt;img alt=&quot;Foundation Image&quot; src=&quot;http://foundation.zurb.com/files/f3/foundation-monster-th.png&quot; width=&quot;400&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;I will also give you a little talk about &lt;a href=&quot;http://foundation.zurb.com/&quot;&gt;&lt;strong&gt;Foundation&lt;/strong&gt;&lt;/a&gt;, a Framework for &lt;strong&gt;responsive design&lt;/strong&gt;. I&amp;#8217;m bored by Bootstrap and it documentation, really not developer-friendly, on my opinion.&lt;/p&gt;
+&lt;p&gt;Stay tuned !&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Epitech Innovative Project - What is it?</title>
+   <link href="http://thomas-romera.com/2012/12/22/epitech-innovative-project-step-1-what-is-it"/>
+   <updated>2012-12-22T00:00:00-05:00</updated>
+   <id>http://thomas-romera.com/2012/12/22/epitech-innovative-project-step-1-what-is-it</id>
+   <content type="html">&lt;p&gt;&lt;img alt=&quot;Epitech Innovative Projects&quot; src=&quot;https://eip.epitech.eu/img/layout/innovation_forum-eip-2010.jpg&quot; width=&quot;490&quot; height=&quot;222&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;The &amp;#8220;&lt;strong&gt;Epitech Innovative Project&lt;/strong&gt;&amp;#8221; is a really important phase in our studies at &lt;strong&gt;Epitech&lt;/strong&gt;. It&amp;#8217;s &lt;span class=&quot;caps&quot;&gt;THE&lt;/span&gt; &lt;span class=&quot;caps&quot;&gt;BIG&lt;/span&gt; project !&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;For two years&lt;/strong&gt;, we&amp;#8217;re going to make a project, of our choice, &lt;strong&gt;from conception to production and sale&lt;/strong&gt;. An &lt;span class=&quot;caps&quot;&gt;EIP&lt;/span&gt; can be an informatic project, or a human project, what you want, the moment the &lt;span class=&quot;caps&quot;&gt;EIP&lt;/span&gt; Laboratory valid it.&lt;/p&gt;
+&lt;p&gt;I choose to work on a &lt;strong&gt;Video Broadcasting solution &lt;/strong&gt;for startup, little and big enterprises. For example, your company is going to organize a conference. For a maximum of visibility and facility, you certainly may want to broadcast it in real-time, HD, with audio and a fabulous PowerPoint to share with your public. All this in one solution, from capture to broadcast. If you want more information, you can go to &lt;a href=&quot;http://plugandstream.com/index.php&quot;&gt;&lt;strong&gt;Plug&amp;amp;Stream Website &lt;/strong&gt;&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;As a Project Manager, I will have to &lt;/strong&gt;:&lt;br /&gt;
+&lt;ul&gt;&lt;br /&gt;
+	&lt;li&gt;Make this &lt;span class=&quot;caps&quot;&gt;EIP&lt;/span&gt; accepted by the &lt;span class=&quot;caps&quot;&gt;EIP&lt;/span&gt; Laboratory&lt;/li&gt;&lt;br /&gt;
+	&lt;li&gt;&lt;strong&gt;Find a good team&lt;/strong&gt;, with the good resources, seven people at least&lt;/li&gt;&lt;br /&gt;
+	&lt;li&gt;&lt;strong&gt;Develop my part, I think I&amp;#8217;m goind to specialize in &lt;strong&gt;&lt;span class=&quot;caps&quot;&gt;FFMPEG&lt;/span&gt;&lt;/strong&gt;and &lt;strong&gt;Cloud Technology&lt;/strong&gt;&lt;br /&gt;
+	&lt;li&gt;&lt;strong&gt;Organize weekly video-conferencing &lt;/strong&gt;with the team (Excepting a lot of trouble, in 4th year, we have to move in a foreign country, so with jet lag of all the team, it should be fun =D)&lt;/li&gt;&lt;br /&gt;
+	&lt;li&gt;Finish the project, &lt;strong&gt;technically and commercially.&lt;/strong&gt;&lt;/li&gt;&lt;/p&gt;
+&lt;/ul&gt;</content>
+ </entry>
+ 
+ 
+</feed>

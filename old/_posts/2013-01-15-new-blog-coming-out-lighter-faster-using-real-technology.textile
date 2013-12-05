@@ -1,0 +1,28 @@
+---
+layout: post
+category: Web Technologies
+title: New blog, lighter, faster, using real technology
+tags: [Jekyll, Blog, Fast, Github, Free Hosting, Static Page, Compilation, Liquid, Markdown, Foundation, Responsive Design, tutorial]
+status: publish
+---
+
+<div style="text-align:center">
+<img align="top" alt="" src="{{BASE_PATH}}/img/jekyll.jpg" width="571" height="261" />
+</div>
+
+Hello, just to tell you that this is the new version of my blog, without this WordPress sucking all the shared server resources.
+
+Seriously, it's really a heavy solution, I don't want to rent a dedicated server only for my blog. I need something more personal, faster, cheaper, and stronger.
+
+So, I'm now using <a href="http://jekyllrb.com/"><strong>Jekyll</strong></a>, (thanks Julien !), and <strong>for free</strong>, use the <strong>GitHub page</strong>. <strong>Jekyll</strong> compile all your pages to give you a "static" site. So, I don't need PHP, I don't need a database. And, it's coded in <strong>RUBY</strong> !
+<strong>
+Here is a semi technique article to more describe Jekyll : <a href="http://thomas-romera.com/2013/01/19/How-Jekyll-Rock-With-Style/">How Jekyll Rock (With Style)</a>
+</strong>
+
+
+<div style="text-align:center">
+<img alt="Foundation Image" src="http://foundation.zurb.com/files/f3/foundation-monster-th.png" width="400" height="300" />
+</div>
+I will also give you a little talk about <a href="http://foundation.zurb.com/"><strong>Foundation</strong></a>, a Framework for <strong>responsive design</strong>. I'm bored by Bootstrap and it documentation, really not developer-friendly, on my opinion.
+
+Stay tuned !
