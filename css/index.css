@@ -33,12 +33,17 @@ body {
   height: auto;
   /* Negative indent footer by its height */
   margin: 0 auto -200px;
+  padding: 0 0 200px;
   /* Pad bottom by footer height */
 }
 
 /* Set the fixed height of the footer here */
 #footer-step1 {
   background-color: #1ABC9C;
+}
+
+#test {
+  max-width: 100%;
 }
 
 
