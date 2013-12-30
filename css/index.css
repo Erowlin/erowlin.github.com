@@ -31,7 +31,7 @@ body { padding-top: 30px; }
   margin-top: 30px;
 }
 
-#wrap {
+.wrap {
   min-height: 100%;
   height: auto;
   /* Negative indent footer by its height */
@@ -41,7 +41,7 @@ body { padding-top: 30px; }
 }
 
 /* Set the fixed height of the footer here */
-#footer-step1 {
+.slider {
   background-color: #1ABC9C;
 }
 
