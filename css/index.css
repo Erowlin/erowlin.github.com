@@ -49,5 +49,10 @@ body { padding-top: 30px; }
   max-width: 100%;
 }
 
+#nav-scrolled {
+  position: fixed;
+  z-index: 1000;
+}
+
 
 

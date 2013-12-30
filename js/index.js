@@ -1,5 +1,5 @@
 $("#arrow-down-first").click(function(){
-	$("body").scrollTo("#step1");
+	$("body").scrollTo("#step2");
 });
 
 
