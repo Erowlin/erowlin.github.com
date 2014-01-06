@@ -6,6 +6,12 @@ $("#arrow-down-skills").click(function(){
 	$("body").scrollTo("#skills-scroll");
 });
 
+$(document).keyup(function(e) {
+	if (e.keyCode == 27) {
+		$("#menu-scroll").toggle("visible");
+   }   // esc
+});
+
 $("#arrow-down-whoami").click(function(){
 	$("body").scrollTo("#whoami-scroll");
 });
@@ -32,8 +38,8 @@ $("#button-menu-scroll").click(function(clicked){
 
 
 function callback() {
-      setTimeout(function() {
-        $( "#effect" ).removeAttr( "style" ).hide().fadeIn();
-      }, 1000 );
-    };
+	setTimeout(function() {
+		$( "#effect" ).removeAttr( "style" ).hide().fadeIn();
+	}, 1000 );
+};
 

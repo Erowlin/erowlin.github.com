@@ -25,6 +25,7 @@ p {
   text-align: center;
   margin-top: 10%;
   margin-bottom: 5%;
+  
 }
 
 #lead-text-picture {
@@ -55,7 +56,6 @@ p {
 }
 
 #button-menu-scroll {
-
   z-index : 1000;
   position: fixed;
   margin-left: 10px;
