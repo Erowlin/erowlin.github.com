@@ -1,17 +1,34 @@
-$("#arrow-down-first").click(function(){
-	$("body").scrollTo("#whoami");
+$("#arrow-down-whoami").click(function(){
+	$("body").scrollTo("#whoami-scroll");
 });
 
-
-$("body").click(function(){
-	console.log($("#menu-scroll"));
-	if (("#menu-scroll").hidden == true)
-		$("#menu-scroll").hide();
+$("#arrow-down-skills").click(function(){
+	$("body").scrollTo("#skills-scroll");
 });
 
-$("#button-menu-scroll").click(function(){
+$("#arrow-down-whoami").click(function(){
+	$("body").scrollTo("#whoami-scroll");
+});
+
+$("#arrow-down-moreaboutme").click(function(){
+	$("body").scrollTo("#moreabuotme-scroll");
+});
+
+$("#button-menu-scroll").click(function(clicked){
 	$("#menu-scroll").toggle("visible");
 });
+
+
+// $("*").click(function(clicked, ev){
+	
+// 	clicked.preventDefault();
+// 	console.log(clicked.currentTarget);
+
+// 	if (! (clicked.currentTarget.id == "button-menu-scroll")) {
+// 	// if (("#menu-scroll").hidden == true)
+// 		console.log("Rentre");
+// 	}
+// });
 
 
 function callback() {
