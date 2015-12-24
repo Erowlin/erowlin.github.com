@@ -6,238 +6,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Loading Bootstrap -->
-  <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Loading Flat UI -->
   <link href="css/flat-ui.css" rel="stylesheet">
   <link href="css/index.css" rel="stylesheet">
   <link rel="shortcut icon" href="img/favicon.ico">
 
-  <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <![endif]-->
-    </head>
-    <body data-spy="scroll" data-target="#menu-scroll">
-      <a id="button-menu-scroll"><span class="glyphicon glyphicon-th-list"></span></a>
-      <div id="menu-scroll">
-        <ul class="nav nav-pills nav-stacked">
-          <li><a href="#home">Hello.</a></li>
-          <li><a href="#whoami">Who Am I ?</a></li>
-        </ul>
+</head>
+<body>
+  <div class="wrap">
+    <div class="container">
+      <h1>Hello.</h1>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="media">
+            <div class="pull-left">
+              <img style="margin-bottom: 30px;" class="media-object img-circle" src="img/thomas_romera.png" height="128" width="128" alt="Thomas Romera Picture">
+            </div>
+            <div id="lead-text-picture" class="media-body">
+              <span class="lead">
+                My name is <b>Thomas Romera.</b> <br>I am a 
+                <span class="ruby-color"> <img width="50" src="img/ruby.png" title="ruby" alt="Ruby Logo"><span class="hidden">Ruby</span> (On Rails)</span> Full-Stack developer.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-xs-1">
+          <table style="text-align: center;" class="table table-bordered">
+            <tr>
+              <td>Freelance Developer</td>
+            </tr>
+            <tr>
+              <td><span class="label label-default">Not available for a job. Beer ?</span></td>
+            </tr>
+            <tr>
+              <td>
+                <a href="http://twitter.com/erowtom"><img src="img/socialicon/Twitter.png" height="30" width="30" alt="Email" class="img-rounded"></a>
+                <a href="http://linkedin.com/in/thomasromera"><img src="img/socialicon/LinkedIn.png" height="30" width="30" alt="Email" class="img-rounded"></a>
+                <a href="http://github.com/erowlin"><img src="img/socialicon/Github.png" height="30" width="30" alt="Email" class="img-rounded"></a>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
-      <div class="section" id="home"></div>
-      <div class="wrap">
-        <div class="container">
-          <h1>Hello. </h1>
-          <div class="row">
-            <div class="col-md-8">
-              <div class="media">
-                <div class="pull-left visible-md hidden-xs">
-                  <img style="margin-bottom: 30px;" class="media-object img-circle" src="img/thomas_romera.png" height="128px" width="128px" alt="...">
-                </div>
-                <div id="lead-text-picture" class="media-body">
-                  <span  class="lead">
-                    My name is <b>Thomas Romera.</b> <br>I am a 
-                    <span class="ruby-color"> <img width="50px" src="img/ruby.png" title="ruby"><span class="hidden">Ruby</span> (On Rails)</span> developer.</span>
-                  </div>        
-                </div>
-              </div>
-              <div class="col-md-2 col-xs-1">
-                <table style="text-align: center;" class="table table-bordered">
-                  <tr>
-                    <td>Freelance Developer</td>
-                  </tr>
-                  <tr>
-                    <td><span class="label label-success">Currently available ! Contact me !</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="http://twitter.com/erowtom"><img src="img/socialicon/Twitter.png" height="30" width="30" alt="Email" class="img-rounded"></a>
-                      <a href="http://linkedin.com/in/thomasromera"><img src="img/socialicon/LinkedIn.png" height="30" width="30" alt="Email" class="img-rounded"></a>
-                      <a href="http://github.com/erowlin"><img src="img/socialicon/Github.png" height="30" width="30" alt="Email" class="img-rounded">
-                        <br>
-                        <a href="skype:thomas.romera?call"><img src="img/socialicon/Skype.png" height="32" width="32" alt="Email" class="img-rounded"></a>
-                        <a href="mailto:contact@thomas-romera.com"><img src="img/socialicon/Arobase.png" height="30" width="30" alt="Email" class="img-rounded"></a>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>   
-          </div>
-
-          <div id="whoami" class="slider visible-md hidden-xs">
-            <div class="container" id="test">
-              <a href="#" style="color: black" id="arrow-down-whoami"> 
-                <p>
-                  <center>
-                    <img height="120px" src="img/ruby.png">
-                  </center> 
-                </p>
-              </a>
-            </div>
-          </div>
-
-
-          <div class="section"></div>
-          <div class="container">
-            <h1 id="whoami-scroll">Who Am I ? </h1>
-            <div class="row">
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <img src="img/epitech.png" alt="Epitech Logo">
-                  <div class="caption">
-                    <h3>Student</h3>
-                    <p>Still studying at <a href="http://epitech.eu" title="Epitech Website" target="_blank">Epitech</a>, I'm currently on my fifth and final year. I learned a LOT from this school, not only on the computer science field, but also on the project management, personal gestion, group work...</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <img src="img/code2.png" alt="Code">
-                  <div class="caption">
-                    <h3>Coder</h3>
-                    <p>I enjoy coding. I Started at the age of 15, I'm now really enjoying it, because of my full-time working in this field, and I now know why I'm doing it. A better world with the software enginering is what I believe.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <img src="img/passionate.png" alt="Passionnate">
-                  <div class="caption">
-                    <h3>Passionate</h3>
-                    <p>I really enjoy what I do, and I have a lot of fun creating new stuff, constantly reworking and upgrading the old ones. I also like try and learn new stuff, constantly. I won't give up until I'm not 100% happy with the result.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <img src="img/travel.png" alt="Travel">
-                  <div class="caption">
-                    <h3>Traveler</h3>
-                    <p>I first traveled to <a href="http://thomasinchina.tumblr.com" title="Personnal blog of my Shanghai trip" target="_blank">Shanghai</a> for my 3rd year internship, and I really enjoyed it. I'm now doing my 4th year in Quebec (Canada), and I plan to move again to China as soon as possible (Do you have something for me? :))</p>
-                  </div>
-                </div>
-              </div>
-              <!-- <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  image
-                  <div class="caption">
-                    <h3>Dynamic</h3>
-                    <p>...</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  image
-                  <div class="caption">
-                    <h3>I Love Startup</h3>
-                    <p>...</p>
-                  </div>
-                </div>
-              </div>-->
-            </div> 
-          </div>
-
-         <!--  <div id="skills" class="slider visible-md hidden-xs">
-            <div class="container" id="test">
-              <a href="#" style="color: black" id="arrow-down-skills"> 
-                <p>
-                  <center>
-                    <img height="120px" src="img/ruby.png">
-                  </center> 
-                </p>
-              </a>
-            </div>
-          </div>
-
-          <div class="section"></div>
-          <div class="container">
-            <h1 id="skills-scroll">Skills</h1>
-            <ul class="media-list">
-              <li class="media well">
-                <div class="pull-left" href="#">
-                  <img class="media-object" src="..." alt="...">
-                </div>
-                <div class="media-body">
-                Skill 1
-                </div>
-              </li>
-              <li class="media well">
-                <div class="pull-right" href="#">
-                  <img class="media-object" src="..." alt="...">
-                </div>
-                <div class="media-body">
-                Skill 2
-                </div>
-              </li>
-              <li class="media well">
-                <div class="pull-left" href="#">
-                  <img class="media-object" src="..." alt="...">
-                </div>
-                <div class="media-body">
-                Skill 3
-                </div>
-              </li>
-              <li class="media well">
-                <div class="pull-right" href="#">
-                  <img class="media-object" src="..." alt="...">
-                </div>
-                <div class="media-body">
-                Skill 4
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div id="moreaboutme" class="slider visible-md hidden-xs">
-            <div class="container" id="test">
-              <a href="#" style="color: black" id="arrow-down-moreaboutme"> 
-                <p>
-                  <center>
-                    <img height="120px" src="img/ruby.png">
-                  </center> 
-                </p>
-              </a>
-            </div>
-          </div>
-          <div class="section"></div>
-          <div class="container">
-            <h1 id="moreaboutme-scroll">More About Me</h1>
-
-
-          </div> -->
-          
-
-
-          <!-- JS =============================-->
-          <script src="js/jquery-1.10.2.min.js"></script>
-          <!-- 
-            <script src="js/jquery.ui.touch-punch.min.js"></script>
-            <script src="js/application.js"></script>
-            <script src="js/bootstrap-select.js"></script>
-            <script src="js/bootstrap-switch.js"></script>
-            <script src="js/flatui-checkbox.js"></script>
-            <script src="js/flatui-radio.js"></script>
-            <script src="js/jquery.tagsinput.js"></script>
-            <script src="js/jquery.placeholder.js"></script>
-            <script src="js/jquery.stacktable.js"></script>
-          -->
-          <script src="js/bootstrap.min.js"></script>
-          <script src="js/index.js"></script>
-          <script src="js/plugins/scrollto.js"></script>
-          
-          <!-- Script Google Analytic -->
-          <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-47105922-1', 'auto');
-            ga('send', 'pageview');
-</script>
-        </body>
-        </html>
+    </div>   
+  </div>
+  <div class="slider">
+    <div class="container">
+      <p>
+      <img class='ruby-logo' height="120px" src="img/ruby.png">
+      </p>
+    </div>
+  </div>
+</body>
+</html>
